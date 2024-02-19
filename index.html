@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="converter.css">
+</head>
+<body>
+    <div class="converter">
+        <h1 class="converter1">Length Converter</h1>
+        <input type="text" placeholder="Input" id="input">
+        <span>=</span>
+        <input type="text" placeholder="Result" id="result">
+
+        <select id="inputType">
+            <option value="meter">meter</option>
+            <option value="kilometer">Kilometer</option>
+            <option value="centimeter">centimeter</option>
+        </select>
+
+        <select id="resultType">
+            <option value="meter">meter</option>
+            <option value="kilometer">Kilometer</option>
+            <option value="centimeter">centimeter</option>
+        </select>
+
+    </div>
+    <script>
+ let input = document.getElementById('input');
+        let result = document.getElementById('result');
+        let inputType = document.getElementById('inputType');
+        let resultType = document.getElementById('resultType');
+        let inputTypeValue , resultTypeValue;
+
+        ///listener
+
+        input.addEventListener("keyup" , myResult);
+        inputType.addEventListener("change", myresult);
+        resultType.addEventListener("change", myresult);
+
+        //taking value 
+
+        inputTypeValue = inputType.value;
+        resultTypeValue = resultType.value;
+        function myResult()
+        {
+            // result.value = input.value;
+            inputTypeValue = inputType.value;
+            resultTypeValue = resultType.value;
+
+            // writing the formula for conversion
+            //meter conversion formula
+
+            if(inputTypeValue === "meter"  && resultTypeValue === "kilometer")
+            {
+                result.value = Number(input.value) * 0.001;
+            }
+            else if(inputTypeValue === "meter"  && resultTypeValue === "meter")
+            {
+                result.value = input.value
+            }
+            else if (inputTypeValue === "meter" && resultTypeValue === "centimeter")
+            {
+                result.value = Number(input.value) * 100;
+            }
+
+            //kilometer conversion formula
+
+            if(inputTypeValue === "kilometer"  && resultTypeValue === "meter")
+            {
+                result.value = Number(input.value) * 1000;
+            }
+            else if(inputTypeValue === "kilometer"  && resultTypeValue === "centimeter")
+            {
+                result.value = Number(input.value) * 100000;
+            }
+            else if (inputTypeValue === "kilometer" && resultTypeValue === "kilometer")
+            {
+                result.value = Number(input.value) * 100;
+            }
+
+
+
+            // centimeter conversion formula 
+
+            if(inputTypeValue === "centimeter"  && resultTypeValue === "kilometer")
+            {
+                result.value = Number(input.value) * 0.00001;
+            }
+            else if(inputTypeValue === "centimeter"  && resultTypeValue === "meter")
+            {
+                result.value = Number(input.value) * 0.01;
+            }
+            else if (inputTypeValue === "centimeter" && resultTypeValue === "centimeter")
+            {
+                result.value = input.value
+            }
+
+        }
+    </script>
+</body>
+</html>
